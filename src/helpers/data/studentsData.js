@@ -141,15 +141,25 @@ const students = [
 
 const getStudents = () => students;
 
-const livingStudents = (studentId) => {
+const livingStudents = () => {
   const liveStudents = students.filter((x) => x.isDead === false);
   return liveStudents;
 };
 
-const dearlyBeloved = (studentId) => {
-  const dearBeloved = students.filter((x) => x.isDead === true);
-  return dearBeloved;
+const theDeadStudents = () => {
+  const deadStudents = students.filter((x) => x.isDead === true);
+  return deadStudents;
+};
+
+const followTheLight = (studentId) => {
+  const studentIndex = students.findIndex((student) => student.id === studentId);
+  students[studentIndex].isDead = true;
 };
 
 
-export default { getStudents, livingStudents, dearlyBeloved };
+export default {
+  getStudents,
+  livingStudents,
+  theDeadStudents,
+  followTheLight,
+};

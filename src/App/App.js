@@ -1,42 +1,50 @@
 import React from 'react';
+import studentData from '../helpers/data/studentsData';
+import SharkTank from '../components/SharkTank/SharkTank';
+import GraveYard from '../components/Graveyard/Graveyard';
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import studentsData from '../helpers/data/studentsData';
-import SharkTank from '../components/SharkTank/SharkTank';
 
 class App extends React.Component {
   state = {
     students: [],
     liveStudents: [],
-    dearBeloved: [],
+    deadStudents: [],
   }
 
   componentDidMount() {
-    const students = studentsData.getStudents();
+    const students = studentData.getStudents();
     this.setState({ students });
-    const liveStudents = studentsData.livingStudents();
+    const liveStudents = studentData.livingStudents();
     this.setState({ liveStudents });
-    const dearBeloved = studentsData.dearlyBeloved();
-    this.setState({ dearBeloved });
+    const deadStudents = studentData.theDeadStudents();
+    this.setState({ deadStudents });
   }
 
-  // liveStudents = (studentId) => {
-  //   studentsData.livingStudents(studentId);
-  //   const students = studentsData.getStudents();
-  //   this.setState({ students });
-  // }
+  sharkAttack = () => {
+    let liveStudents = studentData.livingStudents();
+    const randomStudent = liveStudents[Math.floor(Math.random() * liveStudents.length)];
+    const randomStudentId = randomStudent.id;
+    studentData.followTheLight(randomStudentId);
+    const deadStudents = studentData.theDeadStudents();
+    liveStudents = studentData.livingStudents();
+    this.setState({ deadStudents, liveStudents });
+  }
 
-  // dearBeloved = (studentId) => {
-  //   studentsData.dearlyBeloved(studentId);
-  //   const students = studentsData.getStudents();
-  //   this.setState({ students });
-  // }
 
   render() {
     return (
-    <div className="App">
-      <h1>GraveYard</h1>
-      <SharkTank liveStudents={this.state.liveStudents} />
+      <div className="App">
+      <div className="d-flex flex-wrap">
+        <div className="col-6">
+          <h1 className="text-center">Shark Tank</h1>
+          <SharkTank liveStudents={this.state.liveStudents} sharkAttack={this.sharkAttack} />
+        </div>
+        <div className="col-6">
+          <h1 className="text-center" id="graveyardTitle">Grave Yard</h1>
+          <GraveYard deadStudents={this.state.deadStudents} />
+        </div>
+      </div>
     </div>
     );
   }

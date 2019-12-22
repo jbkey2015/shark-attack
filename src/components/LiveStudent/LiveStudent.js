@@ -6,27 +6,16 @@ class LiveStudent extends React.Component {
     liveStudents: studentShape.studentShape,
   }
 
-  // liveStudentsEvent = (e) => {
-  //   const { liveStudents, student } = this.props;
-  //   e.preventDefault();
-  //   liveStudents(student.id);
-  // }
-
-  // dearBelovedEvent = (e) => {
-  //   const { dearBeloved, student } = this.props;
-  //   e.preventDefault();
-  //   dearBeloved(student.id);
-  // }
-
   render() {
     const { student } = this.props;
-
     return (
-      <div className="card col-3">
-        <div className="card-header">
-          {student.firstName}, {student.lastName}
-        </div>
+      <React.Fragment>
+      <div className="cardFish">
+      <div className="card-body">
+          <h5 className="card-title">{student.firstName} {student.lastName}</h5>
       </div>
+      </div>
+      </React.Fragment>
     );
   }
 }
