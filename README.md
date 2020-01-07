@@ -1,3 +1,22 @@
+# Shark Attack
+
+## Description
+Shark Attack is a game-like application.  The user clicks the "Shark Attack" button which will then select a random living student in the "shark tank" and will kill them.  Killing them sends them to the graveyard where their headstone will display their name.
+## Features
+- Uses newer technology called React
+## Screenshots
+#### Initial View:
+![Initial View](https://raw.githubusercontent.com/jbkey2015/shark-attack/master/screenshots/Annotation%202020-01-06%20193207.png)
+#### Graveyard with stones:
+![Graveyard View](https://raw.githubusercontent.com/jbkey2015/shark-attack/master/screenshots/Annotation%202020-01-06%20193304.png)
+
+## How to Run
+- Clone down the project
+- In the terminal run `npm install`
+- Once set up to run enter the following in the terminal `npm start`
+## Contributors
+[John Key](https://github.com/jbkey2015/shark-attack)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
